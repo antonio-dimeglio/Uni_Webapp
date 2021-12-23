@@ -14,6 +14,9 @@ class GeneDataset(Model):
     
     def get_sentences(self, field: str, attribute: str):
         return super().get_sentences(field, attribute)
+    
+    def find_association(self, key: str, attribute: str) -> list:
+        return super().find_association(key, attribute)
 
 
 class DiseaseDataset(Model):
@@ -26,11 +29,15 @@ class DiseaseDataset(Model):
     def most_frequent_association(self):
         return super().most_frequent_association()
     
-    def get_sentences(self, id: str):
-        return super().get_sentences(id)
+    def get_sentences(self, key: str, attribute: str):
+        return super().get_sentences(key, attribute)
+    
+    def find_association(self, key: str, attribute: str) -> list:
+        return super().find_association(key, attribute)
 
 
-genes = GeneDataset(getcwd() + "/src/data/gene_evidences.tsv")
-#diseases = DiseaseDataset(getcwd() + "/src/data/disease_evidences.tsv")
+#genes = GeneDataset(getcwd() + "/src/data/gene_evidences.tsv")
+diseases = DiseaseDataset(getcwd() + "\\data\\disease_evidences.tsv") #keep in mind that the slashes are in the other direction if ran on windows
 #print(genes.get_unique_entries())
-print(genes.get_sentences("gene_symbol", ""))
+#print(diseases.get_sentences("gene_symbol", ""))
+print(diseases.find_association(key="diseaseid", attribute="C0000737"))

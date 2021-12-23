@@ -1,3 +1,4 @@
+from __future__ import annotations
 import pandas as pd
 import numpy as np
 
@@ -29,9 +30,10 @@ class Model():
 
 
     #Methods
-    def get_unique_entries(self, key:str) -> list:
-        if (key in self.__labels):
-            unique_values = np.sort(self.__dataframe[key].unique())
+    @staticmethod
+    def get_unique_entries(df: Model, key:str) -> list:
+        if (key in df.__labels):
+            unique_values = np.sort(df.__dataframe[key].unique())
             return unique_values
         
         return []
@@ -44,7 +46,7 @@ class Model():
 
     def get_sentences(self, key:str, attribute:str) -> list:
         if (key in self.__labels):
-            if (attribute in self.get_unique_entries()):
+            if (attribute in self.get_unique_entries(key)):
                 sentences = self.__dataframe[self.__dataframe[key] == attribute]["sentence"]
                 return sentences.tolist()
 
@@ -64,13 +66,14 @@ class Model():
             print("Dataset not found, check the inserted path!")
         
     def find_association(self, key:str, attribute:str) -> list:
-
         '''
-        TODO
+        A join is done using the PMID given as input
+        To avoid futile computations we first retreive the PMIDs for a given key
+        instead of merging both dataframes 
         '''
-        associations = []
-        sentences = self.get_sentences(key, attribute)
 
-
-
-        return associations
+        if (key in self.__labels):
+            if (attribute in Model.get_unique_entries(self, key)):
+                ids = self.__dataframe[self.__dataframe[key] == attribute]['pmid']
+                print(ids)
+        pass
