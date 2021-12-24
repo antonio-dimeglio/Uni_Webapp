@@ -21,9 +21,13 @@ class Model():
     def get_path(self): return self.__path
 
     #Constructor
-    def __init__(self, path:str) -> None:
-        self.__path = path
-        self.__load_dataset()
+    def __init__(self, path:str = "", is_dataframe:bool = False, df:pd.DataFrame = None) -> None:
+        if (is_dataframe):
+            self.__dataframe = df
+            self.__labels = set(df.columns)
+        else:
+            self.__path = path
+            self.__load_dataset()
 
 
     #Methods
@@ -34,19 +38,13 @@ class Model():
         
         return []
 
-    def most_frequent_association(self): 
-        '''
-        TODO
-        '''
-        pass
-
     def get_sentences(self, key:str, attribute:str) -> list:
         if (key in self.__labels):
             if (attribute in self.get_unique_entries(key)):
                 sentences = self.__dataframe[self.__dataframe[key] == attribute]["sentence"]
                 return sentences.tolist()
 
-
+        print("Failed to retreive the sentences, are you sure that the function arguments are correct?")
         return []
 
     def get_shape(self): 
@@ -67,6 +65,24 @@ class Model():
             if (attribute in self.get_unique_entries(key)):
                 associations = merged_model[merged_model[key] == attribute][second_attribute]
                 return associations
-                
-
+        
+        print("Failed to retreive associations, are you sure that the function arguments are correct?")
         return None
+
+    #Static methods
+
+    @staticmethod
+    def merge_models(m1:Model, m2:Model, on_key:str):
+        print("Trying to merge the datasets...")
+        if (on_key in m1.get_labels() and on_key in m2.get_labels()):
+            merged_model = pd.merge(m1.get_dataframe(), m2.get_dataframe(), "inner", on=on_key)
+            print("Merge successful.")
+            return Model(is_dataframe=True, df = merged_model)
+        
+        print("Failed to merge the datasets: are you sure the function arguments are correct?")
+        return None
+
+    @staticmethod
+    def most_frequent_association(merged_model:Model, key:str="pmid", n:int = 10): 
+        most_frequent_ids = merged_model.__dataframe[key].value_counts()[:n].index.tolist()
+        return most_frequent_ids
