@@ -14,7 +14,7 @@ class Model():
     '''
     These values are set only once as the Model object is created, hence no setter is needed
     '''
-    def get_labels(self) -> set: return set(self.__dataframe)
+    def get_labels(self) -> set: return set(self.__dataframe.columns)
 
     def get_dataframe(self): return self.__dataframe
 
@@ -65,6 +65,8 @@ class Model():
             if (attribute in self.get_unique_entries(key)):
                 associations = merged_model.get_dataframe()[merged_model.get_dataframe()[key] == attribute][second_attribute]
                 return set(associations)
+            else:
+                print('The attribute is not in the column')
         
         print("Failed to retreive associations, are you sure that the function arguments are correct?")
         return None
