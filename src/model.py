@@ -22,9 +22,10 @@ class Model():
 
     #Constructor
     def __init__(self, path:str = "", is_dataframe:bool = False, df:pd.DataFrame = None) -> None:
-        if (is_dataframe):
+        if (is_dataframe == True and type(df) == pd.DataFrame):
             self.__dataframe = df
             self.__labels = set(df.columns)
+            self.__path = ""
         else:
             self.__path = path
             self.__load_dataset()

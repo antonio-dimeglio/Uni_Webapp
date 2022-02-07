@@ -1,6 +1,8 @@
 from flask import Flask, render_template
 from os import getcwd
 import platform
+
+import pandas as pd
 from datasets import GeneDataset, DiseaseDataset
 from model import Model
 
@@ -21,7 +23,6 @@ genes = GeneDataset(genes_path)
 diseases = DiseaseDataset(disease_path)
 merged_dataframe = Model.merge_models(genes, diseases, "pmid")
 
-print(genes.find_association('gene_symbol', 'ABO', merged_dataframe, 'disease_name'))
 '''
 #A flask app object is created
 app = Flask(__name__)
