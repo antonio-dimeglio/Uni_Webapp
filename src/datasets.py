@@ -14,7 +14,7 @@ class GeneDataset(Model):
         return super().get_sentences(field, attribute)
     
     def find_association(self, key: str, attribute: str, ds: Model, secondary_attribute:str) -> list:
-        return super().find_association(key, attribute, ds)
+        return super().find_association(key, attribute, ds, secondary_attribute)
 
 
 class DiseaseDataset(Model):

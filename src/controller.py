@@ -21,6 +21,8 @@ genes = GeneDataset(genes_path)
 diseases = DiseaseDataset(disease_path)
 merged_dataframe = Model.merge_models(genes, diseases, "pmid")
 
+print(Model.most_frequent_association(merged_dataframe))
+'''
 #A flask app object is created
 app = Flask(__name__)
 
@@ -32,3 +34,4 @@ def home():
 
 
 app.run()
+'''

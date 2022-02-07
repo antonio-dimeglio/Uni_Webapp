@@ -14,7 +14,7 @@ class Model():
     '''
     These values are set only once as the Model object is created, hence no setter is needed
     '''
-    def get_labels(self) -> list: return list(self.__dataframe)
+    def get_labels(self) -> set: return set(self.__dataframe)
 
     def get_dataframe(self): return self.__dataframe
 
@@ -60,11 +60,11 @@ class Model():
             self.__dataframe = None
             print("Dataset not found, check the inserted path!")
         
-    def find_association(self, key:str, attribute:str, merged_model:Model, second_attribute:str) -> list:
+    def find_association(self, key:str, attribute:str, merged_model, second_attribute:str) -> list:
         if (key in self.__labels):
             if (attribute in self.get_unique_entries(key)):
-                associations = merged_model[merged_model[key] == attribute][second_attribute]
-                return associations
+                associations = merged_model.get_dataframe()[merged_model.get_dataframe()[key] == attribute][second_attribute]
+                return set(associations)
         
         print("Failed to retreive associations, are you sure that the function arguments are correct?")
         return None
@@ -83,6 +83,6 @@ class Model():
         return None
 
     @staticmethod
-    def most_frequent_association(merged_model:Model, key:str="pmid", n:int = 10): 
-        most_frequent_ids = merged_model.__dataframe[key].value_counts()[:n].index.tolist()
+    def most_frequent_association(merged_model:Model, key:list=['gene_symbol', 'disease_name'], n:int = 10): 
+        most_frequent_ids = merged_model.get_dataframe()[key].value_counts()[:n].index.tolist()
         return most_frequent_ids
