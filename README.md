@@ -17,6 +17,6 @@ The data consists of two files:
     * organism: organism in which the gene was found
 
 The program is divide into three parts:
-* Data Parser
-* Data Handler
-* Flask Web App
+* Model: Defines the model and the operations that can be applied to it
+* Datasets: Defines the differences between the two datasets by using different default arguments
+* Controller: Handles both datasets and the web application
