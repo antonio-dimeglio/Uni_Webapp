@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>DisGeNET Covid Database</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Styles-->
+    <link rel="stylesheet" href="../static/styles/main_style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md justify-content-center">
+          <h1 class="display-4" style="font-family: 'Playfair+Display'"><b>DisGeNET Covid Database</b></h1>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md justify-content-center">
+            <p class="lead"><b>DisGeNET is a discovery platform containing one of the largest publicly available 
+              collections of genes and variants associated to human diseases. This is a very versatile platform that 
+              can be used for different research purposes including the analysis of the properties of disease genes, 
+              the validation of computationally predicted disease genes and the evaluation of text-mining methods performance.<br><br>
+              DisGeNET has also a COVID-19 data collection that is the result of applying mining tools developed by 
+              MedBioinformatics solutions to the LitCovid dataset Chen et al., 2020, a very peculiar repository containing
+              a selection of papers referring to Coronavirus 19 disease, in order to identify mentions of diseases, signs and symptoms.
+              From this mining, the researcher were able to create two different datasets, in particular a gene evidences and 
+              a disease evidences datasets, 
+              which respectively contain a list of genes and a list of diseases.<br><br>
+              We developed a web application that is able to perform several operations on these two data collections, 
+              for example recording the number of different disease or genes detected in literature, creating a list that display 
+              them in a sequence from A to Z.<br><br>
+              In order to check them just click one of the two buttons below and try all the operations that our web app provides.
+              </b></p>
+          </div>
+      </div>
+
+      <div class="row top-buffer">
+        <div class="col-sm-6">
+          <div class="card">
+            <img class="card-img-top" src="../static/test.jpg" alt="Genes">
+            <div class="card-body">
+              <h5 class="card-title">Genes</h5>
+              <p class="card-text">This page contains all the operations that you can perform on the gene.tsv dataset</p>
+              <a href="#" class="btn btn-primary">Go to specifications</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <img class="card-img-top" src="../static/test_button.jpg" alt="Diseases">
+            <div class="card-body bg-transparent">
+              <h5 class="card-title">Disease</h5>
+              <p class="card-text">This page contains all the operations that you can perform on the disease.tsv dataset</p>
+              <a href="#" class="btn btn-primary">Go to specifications</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Footer with our names -->
+
+    <footer>
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        G. Broglia, A. Di Meglio, C. Fiorenzani, E. Paganin
+      </div>               
+  </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

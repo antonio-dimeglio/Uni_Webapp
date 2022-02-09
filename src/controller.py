@@ -23,16 +23,13 @@ genes = GeneDataset(genes_path)
 diseases = DiseaseDataset(disease_path)
 merged_dataframe = Model.merge_models(genes, diseases, "pmid")
 
-'''
 #A flask app object is created
 app = Flask(__name__)
-
 
 #Homepage route
 @app.route("/")
 def home():
-    return render_template("layout.html")
+    return render_template("home.html")
 
 
 app.run()
-'''
