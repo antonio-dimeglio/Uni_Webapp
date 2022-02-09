@@ -43,21 +43,21 @@
       <div class="row top-buffer">
         <div class="col-sm-6">
           <div class="card">
-            <img class="card-img-top" src="../static/test.jpg" alt="Genes">
+            <img class="card-img-top" src="../static/gene_background.jpg" alt="Genes">
             <div class="card-body">
-              <h5 class="card-title">Genes</h5>
-              <p class="card-text">This page contains all the operations that you can perform on the gene.tsv dataset</p>
-              <a href="#" class="btn btn-primary">Go to specifications</a>
+              <h5 class="card-title">GENES</h5>
+              <p class="card-text"><b>This page contains all the operations that you can perform on the gene.tsv dataset</b></p>
+              <a href="{{url_for('data_managment', datatype='gene')}}" class="btn btn-primary">Go to specifications</a>
             </div>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="card">
-            <img class="card-img-top" src="../static/test_button.jpg" alt="Diseases">
+            <img class="card-img-top" src="../static/disease_background.jpg" alt="Diseases">
             <div class="card-body bg-transparent">
-              <h5 class="card-title">Disease</h5>
-              <p class="card-text">This page contains all the operations that you can perform on the disease.tsv dataset</p>
-              <a href="#" class="btn btn-primary">Go to specifications</a>
+              <h5 class="card-title">DISEASES</h5>
+              <p class="card-text"><b>This page contains all the operations that you can perform on the disease.tsv dataset</b></p>
+              <a href="{{url_for('data_managment', datatype='disease')}}" class="btn btn-primary">Go to specifications</a>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@
     <!-- Footer with our names -->
 
     <footer>
-      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      <div class="text-center p-4" style="background-color:rgba(0, 0, 0, 0.05);">
         G. Broglia, A. Di Meglio, C. Fiorenzani, E. Paganin
       </div>               
   </footer>

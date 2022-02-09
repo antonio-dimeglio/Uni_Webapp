@@ -1,0 +1,9 @@
+body{
+    background-image: url("../gene_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn {
+    margin-top: 10px; 
+}

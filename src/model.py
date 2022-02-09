@@ -67,7 +67,7 @@ class Model():
                 associations = merged_model.get_dataframe()[merged_model.get_dataframe()[key] == attribute][second_attribute]
                 return set(associations)
             else:
-                print('The attribute is not in the column')
+                return set()
         
         print("Failed to retreive associations, are you sure that the function arguments are correct?")
         return None
