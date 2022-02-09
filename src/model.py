@@ -64,6 +64,7 @@ class Model():
     def find_association(self, key:str, attribute:str, merged_model, second_attribute:str) -> list:
         if (key in self.__labels):
             if (attribute in self.get_unique_entries(key)):
+                
                 associations = merged_model.get_dataframe()[merged_model.get_dataframe()[key] == attribute][second_attribute]
                 return set(associations)
             else:

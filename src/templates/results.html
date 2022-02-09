@@ -24,7 +24,7 @@
         {%endfor%}
     {%endif%}
 
-    {% if result_type == 'list_of_sentence_gene' %}
+    {% if result_type == 'list_of_sentence_gene' or result_type == 'list_of_disease'%}
       {% for entry in result%}
         <p>{{entry}}</p>
       {%endfor%}

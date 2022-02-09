@@ -62,7 +62,7 @@ def data_managment(datatype: str):
         operations = disease_operation
         descriptions = disease_operation_description
 
-    return render_template("data.html", datatype=datatype, length = len(operation), shape = shape, labels = labels, operations = operations, operation_description=descriptions)
+    return render_template("data.html", datatype=datatype, length = len(operations), shape = shape, labels = labels, operations = operations, operation_description=descriptions)
 
 @app.route("/results/<operation>", methods=['GET', 'POST'])
 def results(operation:str):
@@ -74,8 +74,11 @@ def results(operation:str):
     else:
         print('OPERAZIONE: ', operation)
         if operation == 'list_of_sentence_gene':
-            print(request.form.listvalues())
             result = genes.get_sentences(request.form['Selection'], request.form['user_request'])
+        if operation == 'list_of_disease':
+            print(request.form.listvalues())
+            result = genes.find_association(request.form['Selection'], request.form['user_request'], merged_model)
+            print(result)
 
     return render_template("results.html", result=result, result_type = operation)
 
