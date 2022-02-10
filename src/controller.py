@@ -51,19 +51,23 @@ def data_managment(datatype: str):
 
 @app.route("/results/<operation>", methods=['GET', 'POST'])
 def results(operation:str):
-    if request.method == "GET":
-        if operation == 'genes_list':
-            result = genes.get_unique_entries()
-        if operation == 'most_frequent_association':
-            result = Model.most_frequent_association(merged_model=merged_model)
+    print(request.form.listvalues())
+    if request.form['Selection'] == 'geneid':
+        attribute = int(request.form['user_request'])
     else:
-        print('OPERAZIONE: ', operation)
+        attribute = request.form['user_request']
+
+    if operation == 'list_of_sentence_gene' or operation == 'list_of_sentence_disease':
         if operation == 'list_of_sentence_gene':
-            result = genes.get_sentences(request.form['Selection'], request.form['user_request'])
+            result = genes.get_sentences(request.form['Selection'], attribute)
+        else:
+            result = diseases.get_sentences(request.form['Selection'], attribute)
+
+    elif operation == 'list_of_disease' or operation == 'list_of_genes':
         if operation == 'list_of_disease':
-            print(request.form.listvalues())
-            result = genes.find_association(request.form['Selection'], request.form['user_request'], merged_model)
-            print(result)
+            result = genes.find_association(request.form['Selection'], attribute, merged_model)
+        else:
+            result = diseases.find_association(request.form['Selection'], attribute, merged_model)
 
     return render_template("results.html", result=result, result_type = operation)
 

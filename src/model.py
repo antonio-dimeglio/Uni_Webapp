@@ -48,7 +48,7 @@ class Model():
                 return sentences.tolist()
 
         print("Failed to retreive the sentences, are you sure that the function arguments are correct?")
-        return []
+        return None
 
 
     def __load_dataset(self):
@@ -68,7 +68,7 @@ class Model():
                 associations = merged_model.get_dataframe()[merged_model.get_dataframe()[key] == attribute][second_key]
                 return set(associations)
             else:
-                return set()
+                return None
         
         print("Failed to retreive associations, are you sure that the function arguments are correct?")
         return None
