@@ -23,58 +23,38 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 p-5">
                 <div class="card">
                     <div class="card-body">
-                      This dataset has shape {{shape}} <br>
-                      This dataset has labels {{labels}} <br>
+                      The dataset <b>{{dataset_name}} </b>has {{shape[1]}} labels and {{shape[0]}} entries. <br> <br>
+                      These are the dataset labels: <br>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            {%for elem in labels%}
+                            <th scope="col">{{elem}}</th>
+                            {%endfor%}
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
             </div>
-            <div class="col-sm-6">
-                <div class="list-group">
-                    {% for i in range(length)%}
-                      {%if i%2 == 0%}
-                        <a href="{{url_for('results', operation=operations[i])}}" class="list-group-item list-group-item-action">
-                        {{operation_description[i]}}<br>
-                      {%endif%}
-                      {%if i%2 == 1 %}
-                      {{operation_description[i]}}<br>
-                      <form action="{{url_for('results', operation=operations[i])}}" method="post">                 
-                      <div class="form-check form-check-inline">
-                        {% if datatype == 'gene' %}
-                        <input class="form-check-input" type="radio" name="Selection" id="" value="gene_symbol">
-                        Gene Symbol
-                        {%endif%}
-                        {% if datatype == 'disease' %}
-                        <input class="form-check-input" type="radio" name="Selection" id="" value="disease_name">
-                        Disease Name
-                        {%endif%}                        
-                      </div>
-
-                      <div class="form-check form-check-inline">
-                        <label class="form-check-label">
-                          {% if datatype == 'gene' %}
-                          <input class="form-check-input" type="radio" name="Selection" id="" value="gene_id">
-                          Gene Id
-                          {%endif%}
-                          {% if datatype == 'disease' %}
-                          <input class="form-check-input" type="radio" name="Selection" id="" value="disease_id">
-                          Disease Id
-                          {%endif%}    
-                      </div>
-                        <input type="text" class="form-control" name="user_request" placeholder="" value="{{ request.form['user_request'] }}">
-                      
-                        <button type="submit" class="btn btn-dark">Submit</button>
-                      </form>
-                    {%endif%}
-                    
-                    </a>
-
-                    {% endfor%}
-                  </div>
-            </div>
         </div>
+    </div>
+
+    <div class="container">
+      <div class="row side scroll-area">
+        <div class="col-sm-2">
+          <ul class="list-group">
+            {%for elem in entry%}
+            <li class="list-group-item">{{elem}}</li>
+            {%endfor%}
+          </ul>
+        </div>
+      </div>
     </div>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

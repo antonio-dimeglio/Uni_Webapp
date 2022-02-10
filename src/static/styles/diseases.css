@@ -7,3 +7,8 @@ body{
 .btn {
     margin-top: 10px; 
 }
+
+.scroll {
+    max-height: 100px;
+    overflow-y: auto;
+}

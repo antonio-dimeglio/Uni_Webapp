@@ -34,35 +34,18 @@ def home():
 
 @app.route("/data/<datatype>")
 def data_managment(datatype: str):
-    gene_operation_description = [
-        "Obtain a list of different genes detected in literature",'''Given a gene symbol or
-        its ID, this function will provide the list of sentences that are an evidence in literature
-        about the relation of this gene with COVID-19''', "Find the 10 most frequent association between genes and disease", 
-        "given a gene symbol or its ID, this function will provide the list of diseases such a gene is associated with"
-    ]
-
-    gene_operation = ['genes_list', 'list_of_sentence_gene', 'most_frequent_association', 'list_of_disease']
-
-    disease_operation_description = [
-        "Obtain a list of different disease detected in literature",'''Given a disease_name or
-        its ID, this function will provide the list of sentences that are an evidence in literature
-        about the relation of this disease with COVID-19''', "Find the 10 most frequent association between genes and disease", 
-        "given a disease_name or its ID, this function will provide the list of genes such a disease is associated with"
-    ]
-
-    disease_operation = ['disease_list', 'list_of_sentence_disease', 'most_frequent_association', 'list_of_gene']
     if datatype == 'gene':
         shape = genes.get_shape()
         labels = genes.get_labels()
-        operations = gene_operation
-        descriptions = gene_operation_description
+        dataset_name = 'gene_evidences.tsv'
+        entry = genes.get_unique_entries()
     else:
         shape = diseases.get_shape()
         labels = diseases.get_labels()
-        operations = disease_operation
-        descriptions = disease_operation_description
+        dataset_name = 'disease_evidences.tsv'
+        entry = diseases.get_unique_entries()
 
-    return render_template("data.html", datatype=datatype, length = len(operations), shape = shape, labels = labels, operations = operations, operation_description=descriptions)
+    return render_template("data.html", datatype=datatype, shape = shape, labels = labels, dataset_name=dataset_name, entry=entry)
 
 @app.route("/results/<operation>", methods=['GET', 'POST'])
 def results(operation:str):
@@ -85,3 +68,29 @@ def results(operation:str):
 app.jinja_env.auto_reload = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.run()
+'''
+
+<div class="row align-items-start p-1">
+          <div class="col-sm-3">
+          </div>
+          <div class="col-sm-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Genes</th>
+                  <th scope="col">Diseases</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%for entry in most_frequent%}
+                 <tr>
+                   <th scope="row"></th>
+                   <td>{{entry[0]}}</td>
+                   <td>{{entry[1]}}</td>
+                 </tr>
+                {%endfor%}
+              </tbody>
+            </table>
+          </div>
+        </div>
+'''

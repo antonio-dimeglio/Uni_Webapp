@@ -19,6 +19,8 @@ class Model():
     def get_dataframe(self): return self.__dataframe
 
     def get_path(self): return self.__path
+  
+    def get_shape(self): return self.__dataframe.shape
 
     #Constructor
     def __init__(self, path:str = "", is_dataframe:bool = False, df:pd.DataFrame = None) -> None:
@@ -48,8 +50,6 @@ class Model():
         print("Failed to retreive the sentences, are you sure that the function arguments are correct?")
         return []
 
-    def get_shape(self): 
-        return self.__dataframe.shape
 
     def __load_dataset(self):
         print(f"Loading dataset: {self.__path}")
@@ -61,11 +61,11 @@ class Model():
             self.__dataframe = None
             print("Dataset not found, check the inserted path!")
         
-    def find_association(self, key:str, attribute:str, merged_model, second_attribute:str) -> list:
+    def find_association(self, key:str, attribute:str, merged_model, second_key:str) -> list:
         if (key in self.__labels):
             if (attribute in self.get_unique_entries(key)):
                 
-                associations = merged_model.get_dataframe()[merged_model.get_dataframe()[key] == attribute][second_attribute]
+                associations = merged_model.get_dataframe()[merged_model.get_dataframe()[key] == attribute][second_key]
                 return set(associations)
             else:
                 return set()
@@ -87,6 +87,6 @@ class Model():
         return None
 
     @staticmethod
-    def most_frequent_association(merged_model:Model, key:list=['gene_symbol', 'disease_name'], n:int = 10): 
+    def most_frequent_association(merged_model:Model, key:list=['gene_symbol', 'disease_name'], n:int = 10) -> list: 
         most_frequent_ids = merged_model.get_dataframe()[key].value_counts()[:n].index.tolist()
         return most_frequent_ids

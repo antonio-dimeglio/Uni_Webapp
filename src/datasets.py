@@ -13,8 +13,8 @@ class GeneDataset(Model):
     def get_sentences(self, field: str, attribute: str):
         return super().get_sentences(field, attribute)
     
-    def find_association(self, key: str, attribute: str, merged_model: Model, secondary_attribute:str = 'disease_name') -> list:
-        return super().find_association(key, attribute, merged_model, secondary_attribute)
+    def find_association(self, key: str, attribute: str, merged_model: Model, second_key:str = 'disease_name') -> list:
+        return super().find_association(key, attribute, merged_model, second_key)
 
 
 class DiseaseDataset(Model):
@@ -30,5 +30,5 @@ class DiseaseDataset(Model):
     def get_sentences(self, key: str, attribute: str):
         return super().get_sentences(key, attribute)
     
-    def find_association(self, key: str, attribute: str, merged_model:Model, secondary_attribute = 'gene_symbol') -> list:
-        return super().find_association(key, attribute, merged_model, secondary_attribute)
+    def find_association(self, key: str, attribute: str, merged_model:Model, second_key = 'gene_symbol') -> list:
+        return super().find_association(key, attribute, merged_model, second_key)
