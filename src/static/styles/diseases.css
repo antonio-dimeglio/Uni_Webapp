@@ -11,13 +11,18 @@ body{
 .side{
     position:fixed;
     top: 40%;
-    left: 10%;
+    left: 4cm;
     height:100%;
 
 }
   
 .scroll-area{
-    width:100%;
-    height:calc(70% - 200px);
+    height:400px; 
     overflow-y:scroll;
-  }
+}
+
+.table,
+.table tr,
+.table td {
+    background-color: white !important;
+}

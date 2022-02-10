@@ -7,16 +7,16 @@ body{
 .btn {
     margin-top: 10px; 
 }
-.side{
-    position:fixed;
-    top: 40%;
-    left: 10%;
-    height:100%;
 
-}
   
 .scroll-area{
-    width:100%;
-    height:calc(70% - 200px);
+    height:617px; 
     overflow-y:scroll;
-  }
+}
+
+.table,
+.table tr,
+.table td {
+    background-color: white !important;
+}
+

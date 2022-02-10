@@ -34,6 +34,8 @@ def home():
 
 @app.route("/data/<datatype>")
 def data_managment(datatype: str):
+
+    associations = Model.most_frequent_association(merged_model)
     if datatype == 'gene':
         shape = genes.get_shape()
         labels = genes.get_labels()
@@ -45,7 +47,7 @@ def data_managment(datatype: str):
         dataset_name = 'disease_evidences.tsv'
         entry = diseases.get_unique_entries()
 
-    return render_template("data.html", datatype=datatype, shape = shape, labels = labels, dataset_name=dataset_name, entry=entry)
+    return render_template("data.html", datatype=datatype, associations = associations, shape = shape, labels = labels, dataset_name=dataset_name, entry=entry)
 
 @app.route("/results/<operation>", methods=['GET', 'POST'])
 def results(operation:str):
@@ -68,29 +70,3 @@ def results(operation:str):
 app.jinja_env.auto_reload = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.run()
-'''
-
-<div class="row align-items-start p-1">
-          <div class="col-sm-3">
-          </div>
-          <div class="col-sm-3">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Genes</th>
-                  <th scope="col">Diseases</th>
-                </tr>
-              </thead>
-              <tbody>
-                {%for entry in most_frequent%}
-                 <tr>
-                   <th scope="row"></th>
-                   <td>{{entry[0]}}</td>
-                   <td>{{entry[1]}}</td>
-                 </tr>
-                {%endfor%}
-              </tbody>
-            </table>
-          </div>
-        </div>
-'''
