@@ -56,7 +56,7 @@ def results(operation:str):
         if request.form['Selection'].isnumeric():
             attribute = int(request.form['user_request'])
         else:
-             render_template("results.html", result=None, result_type = operation)
+            attribute=None
     else:
         attribute = request.form['user_request']
 
