@@ -53,10 +53,10 @@ def data_managment(datatype: str):
 def results(operation:str):
     print(request.form.listvalues())
     if request.form['Selection'] == 'geneid':
-        if request.form['Selection'].isnumeric():
+        try:
             attribute = int(request.form['user_request'])
-        else:
-            attribute=None
+        except:
+            attribute=None  
     else:
         attribute = request.form['user_request']
 
