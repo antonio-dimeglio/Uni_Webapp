@@ -18,5 +18,4 @@ protobuf==3.19.4
 pyOpenSSL==22.0.0
 toml==0.10.2
 tornado==6.1
-xmlrpclib==1.0.1
 zipp==3.7.0
