@@ -19,7 +19,7 @@
     {%else%}
       {% if result_type == 'list_of_sentence_gene' or result_type == 'list_of_sentence_disease'%}
         {% for entry in result%}
-          <p>{{entry}}</p>
+          <p>{{entry|safe}}</p>
         {%endfor%}
       {%endif%}
 
