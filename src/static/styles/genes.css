@@ -9,7 +9,7 @@ body{
 }
 .side{
     position:fixed;
-    top: 20%;
+    top: 40%;
     left: 10%;
     height:100%;
 
@@ -17,7 +17,6 @@ body{
   
 .scroll-area{
     width:100%;
-    height:calc(100% - 200px);
-    margin-top:100px;
+    height:calc(70% - 200px);
     overflow-y:scroll;
   }

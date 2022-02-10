@@ -8,7 +8,16 @@ body{
     margin-top: 10px; 
 }
 
-.scroll {
-    max-height: 100px;
-    overflow-y: auto;
+.side{
+    position:fixed;
+    top: 40%;
+    left: 10%;
+    height:100%;
+
 }
+  
+.scroll-area{
+    width:100%;
+    height:calc(70% - 200px);
+    overflow-y:scroll;
+  }
