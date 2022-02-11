@@ -1,4 +1,10 @@
+#more detailed documentation can be found in the text file
+
 from model import Model
+
+'''these two classes are subclasses of Model superclass, they inherited the methods from the parent class.
+The difference being that some methods have set default parameters (overriding) in order to have 
+higher specificity in the two child classes'''
 
 class GeneDataset(Model):
     def __init__(self, path:str) -> None:
