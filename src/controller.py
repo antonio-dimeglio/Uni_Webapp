@@ -22,7 +22,7 @@ if (platform.system() == 'Windows'):
 else:
     genes_path += "/data/gene_evidences.tsv"
     disease_path += "/data/disease_evidences.tsv"
-
+    
 
 #The dataset objects are created
 genes = GeneDataset(genes_path)

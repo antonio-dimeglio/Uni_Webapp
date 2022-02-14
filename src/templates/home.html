@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <!-- 
+      All the html pages use bootstrap, which is a CSS framework that relies on a grid system to place html objects over the webpage.
+      The grid is separated in container, each container can have infinite row and up to 12 columns, their size can be adjusted depending
+      on the device for which it is rendered on.
+    -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
     <!-- Styles-->
@@ -21,6 +26,7 @@
         </div>
       </div>
       <div class="row">
+        <!-- Using the justify-content-center class bootstrap places the element(s) in question starting from the middle of the page-->
           <div class="col-md justify-content-center">
             <p class="lead"><b>DisGeNET is a discovery platform containing one of the largest publicly available 
               collections of genes and variants associated to human diseases. This is a very versatile platform that 
@@ -39,7 +45,7 @@
               </b></p>
           </div>
       </div>
-
+      <!-- The top-buffer class is a bootstrap element that adds some padding to the top of the html element-->
       <div class="row top-buffer">
         <div class="col-sm-6">
           <div class="card">
@@ -47,6 +53,9 @@
             <div class="card-body">
               <h5 class="card-title">GENES</h5>
               <p class="card-text"><b>This page contains all the operations that you can perform on the gene.tsv dataset</b></p>
+              <!-- In case the user wants to see the gene_evidence.tsv dataset using the url_for function provided by jinja2
+                   we redirect to the data_managment page specifying that we want to visualise the gene data
+              -->
               <a href="{{url_for('data_managment', datatype='gene')}}" class="btn btn-primary">Go to specifications</a>
             </div>
           </div>
@@ -57,6 +66,9 @@
             <div class="card-body bg-transparent">
               <h5 class="card-title">DISEASES</h5>
               <p class="card-text"><b>This page contains all the operations that you can perform on the disease.tsv dataset</b></p>
+              <!-- In case the user wants to see the disease_evidence.tsv dataset using the url_for function provided by jinja2
+                   we redirect to the data_managment page specifying that we want to visualise the disease
+              -->
               <a href="{{url_for('data_managment', datatype='disease')}}" class="btn btn-primary">Go to specifications</a>
             </div>
           </div>
@@ -66,7 +78,6 @@
 
 
     <!-- Footer with our names -->
-
     <footer>
       <div class="text-center p-4" style="background-color:rgba(0, 0, 0, 0.05);">
         G. Broglia, A. Di Meglio, C. Fiorenzani, E. Paganin

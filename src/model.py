@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from pandas.core.reshape.merge import merge
 '''The __future__ module is imported to allow better typinting'''
+
 class Model():
     '''
     This class is used as a base class for both dataset classes

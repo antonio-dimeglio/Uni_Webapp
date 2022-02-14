@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <!-- The css of the page is dinamically set depending on the page requested by the user. Such request is performed in the homepage.
+    -->
     {% block content %}
     {% if datatype == 'gene' %}
         <link rel="stylesheet" href="../static/styles/genes.css">
@@ -26,6 +28,9 @@
             <div class="col-sm mt-5">
                 <div class="card">
                     <div class="card-body">
+                      <!-- By using the argument passed to the render_template function in the controller.py file we visualise
+                           information such as the dataset name, its shape and its labels.
+                      -->
                       The dataset <b>{{dataset_name}} </b>has {{shape[1]}} labels and {{shape[0]}} entries. <br> <br>
                       These are the dataset labels: <br>
                       <table class="table table-striped">
@@ -48,6 +53,9 @@
     <div class="container">
       <div class="row justify-content-start mt-3">
         <div class="col-sm-3">
+          <!-- This element shows the unique genees/diseases present in the dataset, to avoid overflowing the page we create a css class
+            called 'scroll-area'; we then iterate over the list of entries and show them in a list item.
+          -->
           <ul class="list-group scroll-area">
             <li class="list-group-item"><b>{{datatype.capitalize()}} list</b></li>
             {%for elem in entry%}
@@ -59,6 +67,8 @@
         <div class="col-sm-3">
           <div class="card">
             <div class="card-body">
+              <!-- This card is in common for both pages as the entries are common, we used a table to organise the data.
+              -->
               <h5 class="card-title">10 most common associations</h5>
               <table class="table ">
                 <thead>
@@ -83,6 +93,11 @@
         <div class="col-sm-4">
           <div class="card">
             <div class="card-body">
+              <!-- Depending on the page the user is using two cards are rendered to allow a user to enter a query.
+                    Using an html form and the url_for function we can perform a post request, additionally we tell
+                    the flask web_server which operation we want to perform and the data necessary to execute the query
+                    The rendered cards depend on the datatype of the page, i.e. the data that the user requested in the homepage.
+              -->
               {% if datatype == 'gene' %}
               <h5 class="card-title">Given a gene symbol or
                 its ID, this function will provide the list of sentences that are an evidence in literature
