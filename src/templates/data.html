@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,8 +23,20 @@
   <body>      
 
     <div class="container">
+      <div class="row brdcr">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            {% if datatype == 'gene' %}
+            <li class="breadcrumb-item active" aria-current="page">Genes</li>
+            {% else %}
+            <li class="breadcrumb-item active" aria-current="page">Diseases</li>
+            {% endif %}
+          </ol>
+        </nav>    
+      </div>
         <div class="row">
-            <div class="col-sm mt-5">
+            <div class="col-sm mt-3">
                 <div class="card">
                     <div class="card-body">
                       <!-- By using the argument passed to the render_template function in the controller.py file we visualise
@@ -33,17 +44,14 @@
                       -->
                       The dataset <b>{{dataset_name}} </b>has {{shape[1]}} labels and {{shape[0]}} entries. <br> <br>
                       These are the dataset labels: <br>
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            {%for elem in labels%}
-                            <th scope="col">{{elem}}</th>
-                            {%endfor%}
-                          </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                      </table>
+                      <div class="row">
+                      {%for elem in labels%}
+                      <div class="col-2">
+                        <button type="button" class="btn btn-lg rounded-pill" disabled style="background-color:lightblue"><b>{{elem}}</b></button>
+                      </div>
+                      {%endfor%}
+                      </div>
+                      
                     </div>
                   </div>
             </div>
@@ -102,12 +110,12 @@
               <h5 class="card-title">Given a gene symbol or
                 its ID, this function will provide the list of sentences that are an evidence in literature
                 about the relation of this gene with COVID-19 </h5>
-              <form action="{{url_for('results', operation='list_of_sentence_gene')}}" method="post"> 
+              <form action="{{url_for('results', operation='list_of_sentence_gene', datatype = datatype)}}" method="post"> 
               {% else %}
               <h5 class="card-title">Given a disease_name or
                 its ID, this function will provide the list of sentences that are an evidence in literature
                 about the relation of this disease with COVID-19</h5>
-              <form action="{{url_for('results', operation='list_of_sentence_disease')}}" method="post"> 
+              <form action="{{url_for('results', operation='list_of_sentence_disease', datatype = datatype)}}" method="post"> 
               {% endif %}
                               
                 <div class="form-check form-check-inline">
@@ -134,7 +142,7 @@
                 </div>
                 <input type="text" class="form-control" name="user_request" placeholder="" value="{{ request.form['user_request'] }}">
 
-                <button type="submit" class="btn btn-dark">Submit</button>
+                <button type="submit" class="btn">Submit</button>
               </form>
             </div>
           </div>
@@ -143,10 +151,10 @@
             <div class="card-body">
               {% if datatype == 'gene' %}
               <h5 class="card-title">Given a gene symbol or its ID, this function will provide the list of diseases such a gene is associated with</h5>
-              <form action="{{url_for('results', operation='list_of_disease')}}" method="post"> 
+              <form action="{{url_for('results', operation='list_of_disease', datatype = datatype)}}" method="post"> 
               {% else %}
               <h5 class="card-title">Given a disease_name or its ID, this function will provide the list of genes such a disease is associated with</h5>
-              <form action="{{url_for('results', operation='list_of_genes')}}" method="post"> 
+              <form action="{{url_for('results', operation='list_of_genes', datatype = datatype)}}" method="post"> 
               {% endif %}
                               
                 <div class="form-check form-check-inline">
@@ -173,7 +181,7 @@
                 </div>
                 <input type="text" class="form-control" name="user_request" placeholder="" value="{{ request.form['user_request'] }}">
 
-                <button type="submit" class="btn btn-dark">Submit</button>
+                <button type="submit" class="btn">Submit</button>
               </form>
             </div>
           </div>

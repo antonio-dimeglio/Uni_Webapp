@@ -11,18 +11,21 @@
       All the html pages use bootstrap, which is a CSS framework that relies on a grid system to place html objects over the webpage.
       The grid is separated in container, each container can have infinite row and up to 12 columns, their size can be adjusted depending
       on the device for which it is rendered on.
-    -->
+        -->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
     <!-- Styles-->
     <link rel="stylesheet" href="../static/styles/main_style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-md justify-content-center">
-          <h1 class="display-4" style="font-family: 'Playfair+Display'"><b>DisGeNET Covid Database</b></h1>
+          <h1 class="display-4"><b>DisGeNET Covid Database</b></h1>
         </div>
       </div>
       <div class="row">
@@ -56,7 +59,7 @@
               <!-- In case the user wants to see the gene_evidence.tsv dataset using the url_for function provided by jinja2
                    we redirect to the data_managment page specifying that we want to visualise the gene data
               -->
-              <a href="{{url_for('data_managment', datatype='gene')}}" class="btn btn-primary">Go to specifications</a>
+              <a href="{{url_for('data_managment', datatype='gene')}}" class="btn">Go to specifications</a>
             </div>
           </div>
         </div>
@@ -69,20 +72,19 @@
               <!-- In case the user wants to see the disease_evidence.tsv dataset using the url_for function provided by jinja2
                    we redirect to the data_managment page specifying that we want to visualise the disease
               -->
-              <a href="{{url_for('data_managment', datatype='disease')}}" class="btn btn-primary">Go to specifications</a>
+              <a href="{{url_for('data_managment', datatype='disease')}}" class="btn">Go to specifications</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-    <!-- Footer with our names -->
-    <footer>
-      <div class="text-center p-4" style="background-color:rgba(0, 0, 0, 0.05);">
+    <footer class="ftr">
+      <div class="text-center ">
         G. Broglia, A. Di Meglio, C. Fiorenzani, E. Paganin
       </div>               
   </footer>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

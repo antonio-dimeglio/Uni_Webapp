@@ -26,3 +26,11 @@ body{
 .table td {
     background-color: white !important;
 }
+
+.btn{
+    background-color: rgb(0, 0, 0, 0.3);
+}
+
+.brdcr{
+    margin-top: 1%;
+}

@@ -59,7 +59,7 @@ def data_managment(datatype: str):
     return render_template("data.html", datatype=datatype, associations = associations, shape = shape, labels = labels, dataset_name=dataset_name, entry=entry)
 
 @app.route("/results/<operation>", methods=['POST'])
-def results(operation:str):
+def results(operation:str, datatype:str):
     '''
     Based on the query requested the result is obtained, in the case of the geneid it is a numeric value
     hence the try except block is used to type cast the input value of the query, otherwise the value 
@@ -85,7 +85,7 @@ def results(operation:str):
         else:
             result = diseases.find_association(request.form['Selection'], attribute, merged_model)
 
-    return render_template("results.html", result=result, result_type = operation)
+    return render_template("results.html", result=result, result_type = operation, datatype=datatype)
 
 
 '''
