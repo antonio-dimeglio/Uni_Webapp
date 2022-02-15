@@ -110,12 +110,12 @@
               <h5 class="card-title">Given a gene symbol or
                 its ID, this function will provide the list of sentences that are an evidence in literature
                 about the relation of this gene with COVID-19 </h5>
-              <form action="{{url_for('results', operation='list_of_sentence_gene', datatype = datatype)}}" method="post"> 
+              <form action="{{url_for('results', operation='list_of_sentence_gene', datatype='gene')}}" method="post"> 
               {% else %}
               <h5 class="card-title">Given a disease_name or
                 its ID, this function will provide the list of sentences that are an evidence in literature
                 about the relation of this disease with COVID-19</h5>
-              <form action="{{url_for('results', operation='list_of_sentence_disease', datatype = datatype)}}" method="post"> 
+              <form action="{{url_for('results', operation='list_of_sentence_disease', datatype='disease')}}" method="post"> 
               {% endif %}
                               
                 <div class="form-check form-check-inline">
@@ -151,10 +151,10 @@
             <div class="card-body">
               {% if datatype == 'gene' %}
               <h5 class="card-title">Given a gene symbol or its ID, this function will provide the list of diseases such a gene is associated with</h5>
-              <form action="{{url_for('results', operation='list_of_disease', datatype = datatype)}}" method="post"> 
+              <form action="{{url_for('results', operation='list_of_disease', datatype='gene')}}" method="post"> 
               {% else %}
               <h5 class="card-title">Given a disease_name or its ID, this function will provide the list of genes such a disease is associated with</h5>
-              <form action="{{url_for('results', operation='list_of_genes', datatype = datatype)}}" method="post"> 
+              <form action="{{url_for('results', operation='list_of_genes', datatype='disease')}}" method="post"> 
               {% endif %}
                               
                 <div class="form-check form-check-inline">

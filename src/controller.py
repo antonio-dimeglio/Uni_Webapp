@@ -5,10 +5,9 @@ from os import getcwd
 import platform
 
 import pandas as pd
+from sklearn.exceptions import DataDimensionalityWarning
 from datasets import GeneDataset, DiseaseDataset
 from model import Model
-
-
 '''
 At first the getcwd() method from the os module is used to get the current working directory
 Then using the platform.system method we retreive the current OS used to set the correct
@@ -55,11 +54,10 @@ def data_managment(datatype: str):
         labels = diseases.get_labels()
         dataset_name = 'disease_evidences.tsv'
         entry = diseases.get_unique_entries()
-
     return render_template("data.html", datatype=datatype, associations = associations, shape = shape, labels = labels, dataset_name=dataset_name, entry=entry)
 
 @app.route("/results/<operation>", methods=['POST'])
-def results(operation:str, datatype:str):
+def results(operation:str):
     '''
     Based on the query requested the result is obtained, in the case of the geneid it is a numeric value
     hence the try except block is used to type cast the input value of the query, otherwise the value 
@@ -75,14 +73,18 @@ def results(operation:str, datatype:str):
 
     if operation == 'list_of_sentence_gene' or operation == 'list_of_sentence_disease':
         if operation == 'list_of_sentence_gene':
+            datatype='gene'
             result = genes.get_sentences(request.form['Selection'], attribute)
         else:
+            datatype='disease'
             result = diseases.get_sentences(request.form['Selection'], attribute)
 
     elif operation == 'list_of_disease' or operation == 'list_of_genes':
         if operation == 'list_of_disease':
+            datatype='gene'
             result = genes.find_association(request.form['Selection'], attribute, merged_model)
         else:
+            datatype='disease'
             result = diseases.find_association(request.form['Selection'], attribute, merged_model)
 
     return render_template("results.html", result=result, result_type = operation, datatype=datatype)
